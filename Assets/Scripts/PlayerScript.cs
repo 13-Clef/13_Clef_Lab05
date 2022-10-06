@@ -9,10 +9,13 @@ public class PlayerScript : MonoBehaviour
     public int coin;
     public GameObject coinText;
 
+    public float timer;
+    public Text timerText;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -21,6 +24,14 @@ public class PlayerScript : MonoBehaviour
         if (coin >= 60)
         {
             SceneManager.LoadScene("GameWinScene");
+        }
+
+        timer -= Time.deltaTime;
+        timerText.text = "Timer: " + timer.ToString("0:00") + " Seconds";
+
+        if (timer <= 0)
+        {
+            SceneManager.LoadScene("GameLoseScene");
         }
     }
 
