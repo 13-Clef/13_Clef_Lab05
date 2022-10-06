@@ -12,6 +12,8 @@ public class PlayerScript : MonoBehaviour
     public float timer;
     public Text timerText;
 
+    public ParticleSystem particle;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +43,7 @@ public class PlayerScript : MonoBehaviour
         {
             coin += 10;
             Destroy(other.gameObject);
+            particle.Play();
             coinText.GetComponent<Text>().text = "Score: " + coin;
         }
 
@@ -49,4 +52,6 @@ public class PlayerScript : MonoBehaviour
             SceneManager.LoadScene("GameLoseScene");
         }
     }
+
+    
 }
